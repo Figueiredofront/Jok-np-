@@ -1,0 +1,45 @@
+
+const result = document.querySelector('.result')
+const humanScore = document.querySelector('#human-score')
+const machineScore = document.querySelector('#machine-score')
+
+
+let humanScoreNumber = 0
+let machineScoreNumer = 0 
+
+
+const playHuman = (humanChoice) => {
+
+    playThegame(humanChoice, playMachine())
+}
+
+const playMachine = () => {
+    const choices = ['rock', 'paper', 'scissors']
+
+    const randomNumber = Math.floor(Math.random() * 3)
+
+
+    return choices[randomNumber]
+}
+
+
+const playThegame = (human, machine) => {
+
+    console.log('humano:' + human + 'maquina:' + machine)
+
+    if (human === machine) {
+        result.innerHTML = 'Deu empate'
+    } else if (
+        (human === 'paper' && machine === 'rock') ||
+        (human === 'rock' && machine === 'scissors') ||
+        (human === 'scissors' && machine === 'paper')
+    ) {
+        humanScoreNumber++
+        humanScore.innerHTML = humanScoreNumber
+        result.innerHTML = 'Você ganhou'
+    } else {
+        machineScoreNumer++
+        machineScore.innerHTML = machineScoreNumer
+        result.innerHTML = 'Você perdeu para maquina'
+    }
+}
